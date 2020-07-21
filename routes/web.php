@@ -84,3 +84,19 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 
 Route::get('/redirect/{service}', 'SocialController@redirect' );
 Route::get('/callback/{service}', 'SocialController@callback' );
+
+// ==================== Course 45 and >> ==========================
+
+
+
+// ------------------ Method 1
+Route::get('offer', 'Front\CrudController@getOffers' );
+
+// ------------------ Method 2 using namespace and group 
+Route::group(['prefix' => 'offerss', 'namespace' => 'Front'] ,function (){
+
+    Route::get('offers', 'CrudController@getOffers');
+
+    Route::get('store', 'CrudController@store');
+
+});
