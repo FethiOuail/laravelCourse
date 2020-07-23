@@ -93,12 +93,12 @@ Route::get('/callback/{service}', 'SocialController@callback' );
 Route::get('offer', 'Front\CrudController@getOffers' );
 
 // ------------------ Method 2 using namespace and group
-Route::group(['prefix' => 'offerss', 'namespace' => 'Front'] ,function (){
+Route::group(['prefix' => 'offers', 'namespace' => 'Front'] ,function (){
 
     Route::get('offers', 'CrudController@getOffers');
 
-   // Route::get('store', 'CrudController@store');
 
     Route::get('create', 'CrudController@create');
 
+    Route::post('store', 'CrudController@store')->name('offers.store');
 });

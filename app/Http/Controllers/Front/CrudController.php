@@ -10,7 +10,7 @@ class CrudController extends Controller {
 
 
     public function create() {
-        return view('');
+        return view('offers.create');
     }
 
     public function getOffers(){
@@ -24,12 +24,22 @@ class CrudController extends Controller {
 
 
 
-    public function store()
+    public function store(Request $request)
     {
+
+
+
+        $name = $request->get('name');
+        $price = $request->get('price');
+        $details = $request->get('details');
+
+    //  dd($request);
+
+
         Offer::create([
-            'name' => 'Offer3',
-            'price' => '2122',
-            'details' => 'This is just test'
+            'name' => $name,
+            'price' => $price,
+            'details' => $details
         ]);
     }
 
