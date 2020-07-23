@@ -7,11 +7,14 @@ use App\Models\Offer;
 use Illuminate\Http\Request;
 
 class CrudController extends Controller {
-    
 
+
+    public function create() {
+        return view('');
+    }
 
     public function getOffers(){
-        
+
         //$offers = Offer::all();
         //$offers = Offer::get();
         $offers = Offer::select('id', 'name')->get();
