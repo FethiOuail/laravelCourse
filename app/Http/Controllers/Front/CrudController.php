@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CrudController extends Controller {
 
@@ -27,7 +28,13 @@ class CrudController extends Controller {
     public function store(Request $request)
     {
 
+        // validate data before insert to database
 
+        $validator = Validator::make($request->all(), [
+            'name'    => 'reuired|min:3|max:100',
+            'price'   => 'requred|numeric',
+            'details'   => 'requred',
+        ]);
 
         $name = $request->get('name');
         $price = $request->get('price');
@@ -36,6 +43,8 @@ class CrudController extends Controller {
     //  dd($request);
 
 
+
+        // insert data
         Offer::create([
             'name' => $name,
             'price' => $price,
