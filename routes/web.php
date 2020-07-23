@@ -95,10 +95,10 @@ Route::get('offer', 'Front\CrudController@getOffers' );
 // ------------------ Method 2 using namespace and group
 Route::group(['prefix' => 'offers', 'namespace' => 'Front'] ,function (){
 
-    Route::get('offers', 'CrudController@getOffers');
+    Route::get('offers', 'CrudController@getOffers')->middleware('auth');
 
 
-    Route::get('create', 'CrudController@create');
+    Route::get('create', 'CrudController@create')->middleware('auth');
 
-    Route::post('store', 'CrudController@store')->name('offers.store');
+    Route::post('store', 'CrudController@store')->name('offers.store')->middleware('auth');
 });

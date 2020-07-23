@@ -16,25 +16,34 @@ class CrudController extends Controller {
 
     public function getOffers(){
 
-        //$offers = Offer::all();
+        $offers = Offer::all();
         //$offers = Offer::get();
-        $offers = Offer::select('id', 'name')->get();
+      //  $offers = Offer::select('id', 'name')->get();
         return $offers;
 
     }
 
 
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
 
         // validate data before insert to database
 
-        $validator = Validator::make($request->all(), [
-            'name'    => 'reuired|min:3|max:100',
-            'price'   => 'requred|numeric',
-            'details'   => 'requred',
-        ]);
+        $rules = $this->getRules();
+
+        $messeges_erros =  [
+            'name.required' => 'يجب ادخال الاسم'
+        ];
+
+
+        $validator = Validator::make($request->all(), $rules, $messeges_erros);
+
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+
+
 
         $name = $request->get('name');
         $price = $request->get('price');
@@ -50,6 +59,18 @@ class CrudController extends Controller {
             'price' => $price,
             'details' => $details
         ]);
+
+
+    }
+
+
+    protected function getRules() {
+
+        return  [
+            'name'    => 'required|min:3|max:100|unique:offers,name',
+            'price'   => 'required|numeric',
+            'details'   => 'required',
+        ];
     }
 
 
