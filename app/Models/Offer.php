@@ -11,10 +11,10 @@ class Offer extends Model
     protected $table = "offers";
 
 
-    protected $fillable = [ 'name', 'price', 'details' ];
+    protected $fillable = ['name', 'price', 'details'];
     protected $hidden = ['created_at', 'updated_at'];
 
-  //  public $timestamps = false;
+    //  public $timestamps = false;
 
 
 }

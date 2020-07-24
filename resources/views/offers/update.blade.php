@@ -4,7 +4,6 @@
 @section('content')
 
 
-
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,12 +13,13 @@
                 @method('POST')
                 <div class="form-group">
                     <label for="name">Offer Name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Offer Name">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+                           placeholder="Offer Name">
 
                     @error('name')
                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                      <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
 
                 </div>
@@ -36,8 +36,6 @@
                     <input type="text" class="form-control" id="price" name="price" placeholder="Offer price">
 
                 </div>
-
-
 
 
                 <div class="form-group ">
