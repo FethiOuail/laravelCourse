@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-  
+
 @if (isset($obj))
-            
+
 
 <h3> {{ __('messages.About') }} </h3>
 
@@ -26,10 +26,10 @@
 <h4> {{ $obj->id }}</h4>
 
 @else
-    
+
 @endif
 
-
+<h1> Hi How</h1>
 
 <div class="text-center justify-content-center">
 
@@ -39,5 +39,5 @@
 
 
 @endsection
-    
-        
+
+
