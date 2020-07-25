@@ -90,7 +90,7 @@ Route::get('/callback/{service}', 'SocialController@callback' );
 
 
 // ------------------ Method 1
-Route::get('offer', 'Front\CrudController@getOffers' );
+//Route::get('offer', 'Front\CrudController@getOffers' );
 
 // ------------------ Method 2 using namespace and group
 Route::group(
