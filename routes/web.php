@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/anwar', function () {
-    return view('welcome');
+    retun "hi how are you";
 });
 
 
