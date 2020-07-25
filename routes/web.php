@@ -93,12 +93,19 @@ Route::get('/callback/{service}', 'SocialController@callback' );
 Route::get('offer', 'Front\CrudController@getOffers' );
 
 // ------------------ Method 2 using namespace and group
-Route::group(['prefix' => 'offers', 'namespace' => 'Front'] ,function (){
+Route::group(
+    ['prefix' =>  LaravelLocalization::setLocale() ,
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ] ] ,function (){
 
-    Route::get('offers', 'CrudController@getOffers')->middleware('auth');
+    Route::get('offer', 'CrudController@getOffers')->middleware('auth');
 
 
-    Route::get('create', 'CrudController@create')->middleware('auth');
 
-    Route::post('store', 'CrudController@store')->name('offers.store')->middleware('auth');
+    Route::group(['prefix' => 'offers', 'namespace' => 'Front'], function () {
+        Route::get('create', 'CrudController@create')->middleware('auth');
+        Route::post('store', 'CrudController@store')->name('offers.store')->middleware('auth');
+
+    });
+
+
 });

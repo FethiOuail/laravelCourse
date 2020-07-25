@@ -17,5 +17,12 @@ return [
     "Homepage" => "HOMEPAGE",
     "About" =>  "ABOUT",
 
+    "offer name required"=> "Offer Name required",
+
+    "offer price required"=> "Offer price required",
+    "offer details required"=> "You must enter information about this item",
+    "details length" => "Add more information",
+
+
 
 ];

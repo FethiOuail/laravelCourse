@@ -33,6 +33,7 @@
 
                     </div>
 
+                    <label for="price"></label>
                     <input type="text" class="form-control" id="price" name="price" placeholder="Offer price">
 
                 </div>
