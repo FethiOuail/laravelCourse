@@ -19,6 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/anwar', function () {
+    return view('welcome');
+});
+
+
 
 Route::get('/login', function () {
     return "Login";
