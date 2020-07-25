@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <h1> Hi How</h1>
+
 @if (isset($obj))
 
 
