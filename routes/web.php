@@ -97,11 +97,14 @@ Route::group(
     ['prefix' =>  LaravelLocalization::setLocale() ,
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ] ] ,function (){
 
-    Route::get('offer', 'CrudController@getOffers')->middleware('auth');
+
 
 
 
     Route::group(['prefix' => 'offers', 'namespace' => 'Front'], function () {
+
+        Route::get('offer', 'CrudController@getOffers')->middleware('auth');
+
         Route::get('create', 'CrudController@create')->middleware('auth');
         Route::post('store', 'CrudController@store')->name('offers.store')->middleware('auth');
 
