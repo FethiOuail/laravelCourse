@@ -27,4 +27,9 @@ return [
     "offer price" => " سعر العرض",
     "offer details" => "تفاصيل العرض ",
 
+    "action" => "الاجرائات ",
+
+    "edit" => "تعديل",
+    "delete" => "حذف",
+
 ];

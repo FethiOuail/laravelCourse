@@ -27,5 +27,7 @@ return [
     "offer name" => "Offer name",
     "offer price" => "Offer price",
     "offer details" => "Offer Details",
-
+    "action" => "action ",
+    "edit" => "Edit",
+    "delete" => "Delete",
 ];

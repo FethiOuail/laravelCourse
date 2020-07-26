@@ -24,7 +24,7 @@
                     <th scope="col"> {{ __('messages.offer name')  }} </th>
                     <th scope="col"> {{ __('messages.offer price')  }} </th>
                     <th scope="col"> {{ __('messages.offer details')  }} </th>
-                    <th scope="col">action</th>
+                    <th scope="col">{{ __('messages.action')  }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,8 +37,8 @@
 
                     <td>
 
-                        <button class="btn btn-primary"> Edit </button>
-                        <button class="btn btn-danger"> Delete </button>
+                        <a href="{{route('offer.edit',$offer->id)}}" class="btn btn-primary "> {{ __('messages.edit') }} </a>
+                        <a href="{{url('edit/'.$offer->id)}}" class="btn btn-danger "> {{ __('messages.delete') }}</a>
                     </td>
 
                 </tr>
