@@ -16,53 +16,36 @@
 
         <div class="row justify-content-center">
 
-            <form class="col-6  py-3 " method="POST" action="{{ route('offers.store') }}">
-                @csrf
-                @method('POST')
-                <div class="form-group">
-                    <label for="name">Offer Name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}" placeholder="Offer Name">
 
-                    @error('name')
-                    <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span>
-                    @enderror
+            <table class="table table-dark table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">price</th>
+                    <th scope="col">details</th>
+                    <th scope="col">action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($offers as $offer)
+                <tr>
+                    <th scope="row">{{ $offer->id  }}</th>
+                    <td> {{ $offer->name }} </td>
+                    <td> {{ $offer->price }} </td>
+                    <td> {{ $offer->details }} </td>
 
-                </div>
+                    <td>
 
-                <div class="input-group ">
+                        <button class="btn btn-primary"> Edit </button>
+                        <button class="btn btn-danger"> Delete </button>
+                    </td>
 
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fa fa-money"></i>
-                        </div>
+                </tr>
+                @endforeach
 
-                    </div>
-
-                    <input type="text" class="form-control @error('price') is-invalid @enderror " id="price" name="price" value="{{old('price')}}" placeholder="Offer price">
-
-                    @error('price')
-                          <span class="invalid-feedback" role="alert"> <strong> {{ $message }} </strong> </span>
-                    @enderror
-                </div>
-
-
-
-
-                <div class="form-group ">
-                    <label for="details">Offer Details</label>
-
-                    <textarea class="form-control @error('details') is-invalid @enderror"  name="details" rows="3"></textarea>
-
-                    @error('details')
-                    <span class="invalid-feedback"> <strong> {{ $message }} </strong> </span>
-                    @enderror
-
-                </div>
-
-                <button type="submit" class="btn btn-primary">Save</button>
-            </form>
-
-        </div>
+                </tbody>
+            </table>
 
     </div>
 

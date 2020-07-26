@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/anwar', function () {
-    retun "hi how are you";
+    return 'hi how are you';
 });
 
 
@@ -108,12 +108,16 @@ Route::group(
 
     Route::group(['prefix' => 'offers', 'namespace' => 'Front'], function () {
 
-        Route::get('offer', 'CrudController@getOffers')->middleware('auth');
+        Route::get('offer', 'CrudController@getOffers');
 
-        Route::get('create', 'CrudController@create')->middleware('auth');
-        Route::post('store', 'CrudController@store')->name('offers.store')->middleware('auth');
+        Route::get('create', 'CrudController@create')->name('offers.create');
+        Route::post('store', 'CrudController@store')->name('offers.store');
+
+
+        Route::get('allOffers','CrudController@getAllOffers');
 
     });
 
+   // Route::get('allOffers','Front\CrudController@getAllOffers');
 
 });
