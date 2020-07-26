@@ -52,7 +52,7 @@
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('offers.show')  }}"> offers </a>
+                        <a class="nav-link" href="{{ route('offers.show')  }}"> offers 1 </a>
                     </li>
 
 
