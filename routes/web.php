@@ -114,7 +114,7 @@ Route::group(
         Route::post('store', 'CrudController@store')->name('offers.store');
 
 
-        Route::get('allOffers','CrudController@getAllOffers');
+        Route::get('allOffers','CrudController@getAllOffers')->name('offers.show');
 
     });
 
