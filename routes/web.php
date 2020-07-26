@@ -121,6 +121,6 @@ Route::group(
 
     });
 
-   // Route::get('allOffers','Front\CrudController@getAllOffers');
+    Route::get('allOffersJson','Front\CrudController@getOfferJson');
 
 });

@@ -122,6 +122,13 @@ class CrudController extends Controller {
     }
 
 
+    public function getOfferJson() {
+        $offers = Offer::all();
+
+        return $offers;
+    }
+
+
 
 
 
