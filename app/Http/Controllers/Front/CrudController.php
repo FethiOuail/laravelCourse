@@ -7,6 +7,8 @@ use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 class CrudController extends Controller {
 
@@ -15,7 +17,11 @@ class CrudController extends Controller {
     public function getAllOffers() {
       //  $offers = Offer::all();
 
-        $offers = Offer::select('id', 'name', 'price', 'details')->get();
+        $offers = Offer::select('id',
+            'name_'.LaravelLocalization::getCurrentLocale() . ' as name',
+            'price',
+            'details_'.LaravelLocalization::getCurrentLocale() . ' as details'
+        )->get();
         return view('offers.all')->with('offers',$offers);
     }
 
@@ -57,21 +63,31 @@ class CrudController extends Controller {
 
 */
 
-        $name = $request->get('name');
+     /*   $name = $request->get('name');
         $price = $request->get('price');
         $details = $request->get('details');
-
+*/
     //  dd($request);
 
 
 
         // insert data
-        Offer::create([
+       /* Offer::create([
             'name' => $name,
             'price' => $price,
             'details' => $details
         ]);
+      */
 
+        //insert
+        Offer::create([
+
+            'name_ar' => $request->name_ar,
+            'name_en' =>   $request->name_en,
+            'price' =>  $request->price,
+            'details_ar' => $request->details_ar,
+            'details_en' => $request->details_en,
+        ]);
 
         return redirect()->back()->with(['success' => 'تمت الاضافة بنجاح']);
 

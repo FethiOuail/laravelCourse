@@ -20,10 +20,20 @@
                 @csrf
                 @method('POST')
                 <div class="form-group">
-                    <label for="name">Offer Name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}" placeholder="Offer Name">
+                    <label for="name_en">Offer Name</label>
+                    <input type="text" class="form-control @error('name_en') is-invalid @enderror" id="name_en" name="name_en" value="{{old('name_en')}}" placeholder="Offer Name">
 
-                    @error('name')
+                    @error('name_en')
+                    <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span>
+                    @enderror
+
+                </div>
+
+                <div class="form-group">
+                    <label for="name_ar">Offer Name arabic</label>
+                    <input type="text" class="form-control @error('name_ar') is-invalid @enderror" id="name_ar" name="name_ar" value="{{old('name_ar')}}" placeholder="اسم العرض">
+
+                    @error('name_ar')
                     <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span>
                     @enderror
 
@@ -49,11 +59,23 @@
 
 
                 <div class="form-group ">
-                    <label for="details">Offer Details</label>
+                    <label for="details_en">Offer Details</label>
 
-                    <textarea class="form-control @error('details') is-invalid @enderror"  name="details" rows="3"></textarea>
+                    <textarea class="form-control @error('details_en') is-invalid @enderror"  name="details_en" rows="3"></textarea>
 
-                    @error('details')
+                    @error('details_en')
+                    <span class="invalid-feedback"> <strong> {{ $message }} </strong> </span>
+                    @enderror
+
+                </div>
+
+
+                <div class="form-group ">
+                    <label for="details_ar">تفاصيل العرض</label>
+
+                    <textarea class="form-control @error('details_ar') is-invalid @enderror"  name="details_ar" rows="3"></textarea>
+
+                    @error('details_ar')
                     <span class="invalid-feedback"> <strong> {{ $message }} </strong> </span>
                     @enderror
 

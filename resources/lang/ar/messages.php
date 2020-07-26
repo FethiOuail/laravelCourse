@@ -23,4 +23,8 @@ return [
     "offer details required"=> "يجب ادخال معلومات حول هذا العنصر",
     "details length" => "أضف معلومات أكثر",
 
+    "offer name" => "اسم العرض ",
+    "offer price" => " سعر العرض",
+    "offer details" => "تفاصيل العرض ",
+
 ];

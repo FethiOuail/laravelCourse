@@ -17,13 +17,13 @@
         <div class="row justify-content-center">
 
 
-            <table class="table table-dark table-hover">
-                <thead>
+            <table class="table  table-hover table-bordered " >
+                <thead class="thead-light">
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">name</th>
-                    <th scope="col">price</th>
-                    <th scope="col">details</th>
+                    <th scope="col"> {{ __('messages.offer name')  }} </th>
+                    <th scope="col"> {{ __('messages.offer price')  }} </th>
+                    <th scope="col"> {{ __('messages.offer details')  }} </th>
                     <th scope="col">action</th>
                 </tr>
                 </thead>
