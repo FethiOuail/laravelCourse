@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Events\VideoViewer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
+use App\Models\Video;
+use App\Traits\OfferTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -13,6 +16,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 class CrudController extends Controller {
 
 
+    use OfferTrait;
 
     public function getAllOffers() {
       //  $offers = Offer::all();
@@ -79,9 +83,14 @@ class CrudController extends Controller {
         ]);
       */
 
+        $file_name = $this->saveImage($request->photo, 'images/offers');
+
+       // return "Okay";
+
         //insert
         Offer::create([
 
+            'photo' => $file_name,
             'name_ar' => $request->name_ar,
             'name_en' =>   $request->name_en,
             'price' =>  $request->price,
@@ -143,5 +152,16 @@ class CrudController extends Controller {
         ];
     }
 */
+
+
+    public function getVideo() {
+
+        $video = Video::first();
+
+        event(new VideoViewer($video));
+
+        return view('video')->with('video', $video);
+    }
+
 
 }

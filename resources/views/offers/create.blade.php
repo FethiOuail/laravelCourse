@@ -19,7 +19,7 @@
 
                 <div class="row justify-content-center">
 
-                    <form class="col-6  py-3 " method="POST" action="{{ route('offers.store') }}">
+                    <form class="col-6  py-3 " method="POST" action="{{ route('offers.store') }}" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <div class="form-group">
@@ -80,6 +80,16 @@
 
                             @error('details_ar')
                             <span class="invalid-feedback"> <strong> {{ $message }} </strong> </span>
+                            @enderror
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name_en">Offer Photo</label>
+                            <input type="file" class="form-control @error('photo') is-invalid @enderror" id="photo" name="photo" value="{{old('photo')}}" >
+
+                            @error('name_en')
+                            <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span>
                             @enderror
 
                         </div>

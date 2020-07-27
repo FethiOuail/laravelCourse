@@ -123,4 +123,8 @@ Route::group(
 
     Route::get('allOffersJson','Front\CrudController@getOfferJson');
 
+
+    Route::get('youtube','Front\CrudController@getVideo');
+
+
 });
