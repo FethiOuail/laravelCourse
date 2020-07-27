@@ -47,8 +47,8 @@
                     </td>
                     <td>
 
-                        <a href="{{route('offer.edit',$offer->id)}}" class="btn btn-primary "> {{ __('messages.edit') }} </a>
-                        <a href="{{route('offer.delete',$offer->id)}}" class="btn btn-danger "> {{ __('messages.delete') }}</a>
+                        <a href="{{route('offer.edit',$offer->id)}}" class="btn btn-primary btn-sm"> {{ __('messages.edit') }} </a>
+                        <a href="{{route('offer.delete',$offer->id)}}" class="btn btn-danger btn-sm"> {{ __('messages.delete') }}</a>
                     </td>
 
                 </tr>
