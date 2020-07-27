@@ -129,3 +129,18 @@ Route::group(
 
 
 });
+
+
+################################ Begin AJAX Routes  ################################
+
+Route::group(['prefix' => 'ajax-offers'], function () {
+
+    Route::get('create','OfferController@create')->name('ajax.offer.create');
+    Route::post('store', 'OfferController@store')->name('ajax.offers.store');
+
+
+
+});
+
+
+######################################## End ############################################"

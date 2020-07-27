@@ -20,7 +20,7 @@ class CreateOffersTable extends Migration
             $table->float('price');
             $table->text('details_en');
             $table->text('details_ar');
-            $table->string('photo');
+            $table->string('photo')->default("offer_defualt.png");
             $table->timestamps();
         });
     }
