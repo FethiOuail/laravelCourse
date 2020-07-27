@@ -24,6 +24,7 @@ class CrudController extends Controller {
         $offers = Offer::select('id',
             'name_'.LaravelLocalization::getCurrentLocale() . ' as name',
             'price',
+            'photo',
             'details_'.LaravelLocalization::getCurrentLocale() . ' as details'
         )->get();
         return view('offers.all')->with('offers',$offers);
@@ -138,6 +139,19 @@ class CrudController extends Controller {
     }
 
 
+    public function delete($id) {
+        // check if offer id exists
+
+        $offer =  Offer::find($id);
+
+        if (!$offer)
+            return redirect()->back()->with(['error' => __('messages.offer_not_exist')]);
+
+        $offer->delete();
+
+        return redirect()->route('offers.show',$id)->with(['success' => __('messages.offer_deleted_successfully')]);
+
+    }
 
 
 

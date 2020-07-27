@@ -116,6 +116,7 @@ Route::group(
 
         Route::get('edit/{id}', 'CrudController@editOffer')->name('offer.edit');
         Route::post('update/{id}', 'CrudController@updateOffer')->name('offers.update');
+        Route::get('delete/{id}', 'CrudController@delete')->name('offer.delete');
 
         Route::get('allOffers','CrudController@getAllOffers')->name('offers.show');
 

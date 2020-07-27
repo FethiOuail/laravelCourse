@@ -31,5 +31,8 @@ return [
 
     "edit" => "تعديل",
     "delete" => "حذف",
+    "offer images" => "الصورة",
+    "offer_not_exist" => "العرض غير موجود" ,
+    "offer_deleted_successfully" => "تم الحذف بنجاح" ,
 
 ];

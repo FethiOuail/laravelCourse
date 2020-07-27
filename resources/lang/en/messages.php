@@ -30,4 +30,7 @@ return [
     "action" => "action ",
     "edit" => "Edit",
     "delete" => "Delete",
+    "offer images" => "Photo",
+    'offer_not_exist' => "offer Not exist",
+    "offer_deleted_successfully" => "Offer deleted Successfully" ,
 ];
