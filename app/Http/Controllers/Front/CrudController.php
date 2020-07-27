@@ -9,6 +9,7 @@ use App\Models\Offer;
 use App\Models\Video;
 use App\Traits\OfferTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -146,6 +147,14 @@ class CrudController extends Controller {
 
         if (!$offer)
             return redirect()->back()->with(['error' => __('messages.offer_not_exist')]);
+
+
+        $path = 'images/offers/'.$offer->photo;
+
+        if (File::exists($path)) {
+            //File::delete($image_path);
+            unlink($path);
+        }
 
         $offer->delete();
 
