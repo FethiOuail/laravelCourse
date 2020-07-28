@@ -52,4 +52,12 @@ class OfferController extends Controller
     }
 
 
+    public function all(){
+
+        $offers = Offer::all();
+
+        return view('ajaxoffers.all', compact('offers'));
+    }
+
+
 }
