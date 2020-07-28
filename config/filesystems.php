@@ -58,7 +58,7 @@ return [
         'offers' => [
             'driver' => 'local',
             'root' => base_path() . 'public/images/offers',
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
 

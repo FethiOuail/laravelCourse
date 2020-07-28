@@ -2,6 +2,10 @@
 
 @section('content')
 
+    <div class="alert alert-success " id="msg_success" style="display: none">
+        saved succssusfully
+    </div>
+
     <div class="row justify-content-center">
 
         <form class="col-6  py-3 " id="offerForm" method="POST"  enctype="multipart/form-data">
@@ -108,6 +112,9 @@
                 cache: false,
 
                 success: function (data) {
+                    if (data.status === true) {
+                       $("#msg_success").show();
+                    }
 
                 },
                 error: function () {
