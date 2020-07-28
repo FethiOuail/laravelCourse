@@ -6,6 +6,7 @@ use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use App\Traits\OfferTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class OfferController extends Controller
@@ -75,6 +76,16 @@ class OfferController extends Controller
 
 
         $offer->delete();
+
+
+        $path = 'images/offers/'.$offer->photo;
+
+        if (File::exists($path)) {
+            //File::delete($image_path);
+            unlink($path);
+        }
+
+
 
         if ($offer) return response()->json([
             'status' => true,
