@@ -30,7 +30,7 @@
             </thead>
             <tbody>
             @foreach($offers as $offer)
-                <tr>
+                <tr class="offerRow{{$offer->id}}">
                     <th scope="row">{{ $offer->id  }}</th>
                     <td> {{ $offer->name }} </td>
                     <td> {{ $offer->price }} </td>
@@ -43,6 +43,7 @@
 
                         <a href="{{route('offer.edit',$offer->id)}}" class="btn btn-primary btn-sm"> {{ __('messages.edit') }} </a>
                         <a href="{{route('offer.delete',$offer->id)}}" class="btn btn-danger btn-sm"> {{ __('messages.delete') }}</a>
+                        <a  offer_id="{{$offer->id}}"  class="btn btn-success btn-sm deleteBtn">AjaxDelete</a>
                     </td>
 
                 </tr>
@@ -61,27 +62,34 @@
 @section('scripts')
     <script>
 
-        $(document).on('click', '#save_offer', function (e) {
+        $(document).on('click', '.deleteBtn', function (e) {
 
             e.preventDefault();
 
-            var formData = new FormData($("#offerForm")[0]);
+            var offer_id = $(this).attr('offer_id');
+
+            console.log(offer_id);
 
             $.ajax({
 
                 type: 'post',
                 enctype: 'multipart/form-data',
-                url: "{{route('ajax.offers.store')}}",
-                data: formData,
+                url: "{{route('ajax.offers.delete')}}",
+                data: {
+                    '_token': "{{csrf_token()}}",
+                    'id':offer_id
+                },
 
-                processData: false,
-                contentType: false,
-                cache: false,
+
 
                 success: function (data) {
                     if (data.status === true) {
                         $("#msg_success").show();
+
+                        $('.offerRow'+data.id).remove();
                     }
+
+
 
                 },
                 error: function () {

@@ -6,6 +6,7 @@ use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use App\Traits\OfferTrait;
 use Illuminate\Http\Request;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class OfferController extends Controller
 {
@@ -54,10 +55,38 @@ class OfferController extends Controller
 
     public function all(){
 
-        $offers = Offer::all();
+     //   $offers = Offer::all();
+
+        $offers = Offer::select('id',
+            'name_'.LaravelLocalization::getCurrentLocale() . ' as name',
+            'price',
+            'photo',
+            'details_'.LaravelLocalization::getCurrentLocale() . ' as details'
+        )->get();
 
         return view('ajaxoffers.all', compact('offers'));
     }
 
+    public function delete(Request $request) {
+
+
+        $offer = Offer::find($request->id);
+
+
+
+        $offer->delete();
+
+        if ($offer) return response()->json([
+            'status' => true,
+            'msg' => 'تم الحفظ بنجاح',
+            'id' => $request->id ,
+        ]);
+
+        else  return response()->json([
+            'status' => false,
+            'msg' => 'فشل في الحفظ',
+        ]);
+
+    }
 
 }
